@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - msger</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header style="padding: 20px 0;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <img src="msger.png" alt="msger" style="height: 30px; width: auto;">
+                <h2 style="margin: 0; font-size: 1.2rem;">Settings</h2>
+            </div>
+        </header>
+
+        <div style="flex: 1; overflow-y: auto; padding-bottom: 80px;">
+            <div class="card"
+                style="background: var(--surface-color); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <h3>Profile</h3>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label for="username-input">Username</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="username-input" placeholder="New username">
+                        <button id="save-username-btn" style="width: auto; margin: 0;">Save</button>
+                    </div>
+                    <p id="username-msg" style="font-size: 0.8rem; margin-top: 5px;"></p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <label style="color: var(--text-secondary); font-size: 0.9rem;">Email</label>
+                    <div id="user-email" style="font-size: 1rem; color: var(--text-color); margin-top: 5px;">loading...
+                    </div>
+                </div>
+            </div>
+
+            <div class="card"
+                style="background: var(--surface-color); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <h3>Appearance</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">Select a theme</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px;">
+                    <button class="theme-btn" data-theme="dark"
+                        style="background: #121212; color: #fff; border: 1px solid #333;">Dark</button>
+                    <button class="theme-btn" data-theme="light"
+                        style="background: #ffffff; color: #000; border: 1px solid #ccc;">Light</button>
+                    <button class="theme-btn" data-theme="midnight"
+                        style="background: #0f172a; color: #fff; border: 1px solid #334155;">Midnight</button>
+                    <button class="theme-btn" data-theme="ocean"
+                        style="background: #001f3f; color: #fff; border: 1px solid #004080;">Ocean</button>
+                    <button class="theme-btn" data-theme="sunset"
+                        style="background: #2d1b2e; color: #ffeaa7; border: 1px solid #633c5e;">Sunset</button>
+                </div>
+            </div>
+
+            <button id="logout-btn" class="btn"
+                style="background-color: var(--error-color); color: #fff; margin-top: 20px;">Log Out</button>
+        </div>
+    </div>
+
+    <script type="module" src="src/pages/settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>msger</title>
+        <link rel="stylesheet" href="src/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            #intro-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--bg-color);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            #intro-logo {
+                width: 100px;
+                height: auto;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+
+                50% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+
+                100% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="app">
+        <div id="intro-screen">
+            <img src="msger.png" id="intro-logo" alt="msger">
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth } from './src/services/firebase.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { checkUsernameExists } from './src/services/db.js';
+
+        // Wait for 2 seconds then check auth
+        setTimeout(() => {
+            checkAuth();
+        }, 2000);
+
+        function checkAuth() {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    const hasUsername = await checkUsernameExists(user.uid);
+                    if (hasUsername) {
+                        window.location.href = 'friends.html';
+                    } else {
+                        window.location.href = 'friends.html';
+                    }
+                } else {
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

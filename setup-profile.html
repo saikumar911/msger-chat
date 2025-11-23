@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Profile - MSBB Chat</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container" style="justify-content: center;">
+        <div class="card"
+            style="background: var(--surface-color); padding: 30px; border-radius: 16px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);">
+            <h2 style="margin-bottom: 10px;">One Last Step</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Please choose a unique username to complete
+                your profile.</p>
+
+            <form id="setup-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required placeholder="Choose a unique username">
+                    <p id="username-status" style="font-size: 0.8rem; margin-top: 4px;"></p>
+                </div>
+
+                <p id="error-message" class="error-msg"></p>
+
+                <button type="submit" class="btn">Complete Setup</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="src/pages/setup-profile.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - msger</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header style="padding: 20px 0;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <img src="msger.png" alt="msger" style="height: 30px; width: auto;">
+                <h2 style="margin: 0; font-size: 1.2rem;">Notifications</h2>
+            </div>
+        </header>
+
+        <div id="notifications-list" style="flex: 1; overflow-y: auto; padding-bottom: 80px;">
+            <div class="loading-screen" style="height: 200px;">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/pages/notifications.js"></script>
+</body>
+
+</html>

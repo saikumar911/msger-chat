@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Users Collection
+    // Allow public read so unauthenticated users can check if username exists
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isAuthenticated() && (
+        request.auth.uid == userId || 
+        // Allow sending friend requests (only updating friendRequestsReceived)
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['friendRequestsReceived'])) ||
+        // Allow accepting friend requests (updating friends and friendRequestsSent on the sender)
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['friends', 'friendRequestsSent'])) ||
+        // Allow removing friend requests (canceling/rejecting)
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['friendRequestsReceived']))
+      );
+    }
+
+    // Chats Collection
+    match /chats/{chatId} {
+      allow read: if isAuthenticated() && (request.auth.uid in resource.data.participants);
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && (request.auth.uid in resource.data.participants);
+
+      match /messages/{messageId} {
+        allow read, create: if isAuthenticated() && (
+          (exists(/databases/$(database)/documents/chats/$(chatId)) && request.auth.uid in get(/databases/$(database)/documents/chats/$(chatId)).data.participants) ||
+          (!exists(/databases/$(database)/documents/chats/$(chatId)) && (chatId.matches(request.auth.uid + '_.*') || chatId.matches('.*_' + request.auth.uid)))
+        );
+      }
+    }
+  }
+}

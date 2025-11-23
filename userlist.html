@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Users - msger</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header style="padding: 20px 0;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <img src="msger.png" alt="msger" style="height: 30px; width: auto;">
+                <h2 style="margin: 0; font-size: 1.2rem;">Find People</h2>
+            </div>
+            <div class="input-group" style="margin-top: 15px;">
+                <input type="text" id="search-input" placeholder="Search by username...">
+            </div>
+        </header>
+
+        <div id="users-list" style="flex: 1; overflow-y: auto; padding-bottom: 80px;">
+            <!-- Users will appear here -->
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 20px;">Type to search users...</p>
+        </div>
+    </div>
+
+    <script type="module" src="src/pages/userlist.js"></script>
+</body>
+
+</html>

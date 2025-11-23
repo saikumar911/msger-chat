@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends - msger</title>
+    <link rel="stylesheet" href="src/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header style="padding: 20px 0; display: flex; justify-content: space-between; align-items: center;">
+            <img src="msger.png" alt="msger" style="height: 30px; width: auto;">
+            <div id="user-avatar"
+                style="width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%;"></div>
+        </header>
+
+        <div id="friends-list" style="flex: 1; overflow-y: auto; padding-bottom: 80px;">
+            <div class="loading-screen" style="height: 200px;">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="src/pages/friends.js"></script>
+</body>
+
+</html>
